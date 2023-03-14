@@ -43,6 +43,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -79,6 +81,8 @@ kapt {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.androidx.compose.bom))
 
@@ -90,15 +94,18 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    implementation(libs.accompanist.placeholder)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.dagger.hilt.android)
+    implementation(libs.kotlinx.datetime)
     implementation(libs.material)
 
     kapt(libs.dagger.hilt.compiler)
