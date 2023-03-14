@@ -1,6 +1,7 @@
 package com.sindrenm.lwb.app.ui.theme
 
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +29,7 @@ fun LwbTheme(content: @Composable () -> Unit) {
 }
 
 @Composable
+@RequiresApi(Build.VERSION_CODES.S)
 private fun dynamicTheme(darkTheme: Boolean): ColorScheme {
     val context = LocalContext.current
 
