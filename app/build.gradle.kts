@@ -1,6 +1,11 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlinter)
 }
 
@@ -34,13 +39,14 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     buildFeatures {
@@ -62,6 +68,16 @@ kotlin {
     jvmToolchain(19)
 }
 
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.androidx.compose.bom))
@@ -69,6 +85,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.dagger.hilt.android.testing)
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
@@ -81,7 +98,15 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.dagger.hilt.android)
     implementation(libs.material)
 
+    kapt(libs.dagger.hilt.compiler)
+
+    kaptAndroidTest(libs.dagger.hilt.compiler)
+
+    kaptTest(libs.dagger.hilt.compiler)
+
+    testImplementation(libs.dagger.hilt.android.testing)
     testImplementation(libs.junit4)
 }

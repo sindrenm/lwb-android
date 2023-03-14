@@ -9,7 +9,9 @@ import androidx.navigation.compose.rememberNavController
 import com.sindrenm.lwb.app.home.HomeGraphRoute
 import com.sindrenm.lwb.app.home.homeNavGraph
 import com.sindrenm.lwb.app.ui.theme.LwbTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
