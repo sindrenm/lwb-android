@@ -58,6 +58,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(19)
+}
+
 dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.androidx.compose.bom))
