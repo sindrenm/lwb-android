@@ -8,7 +8,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun LwbTheme(content: @Composable () -> Unit) {
@@ -19,6 +22,15 @@ fun LwbTheme(content: @Composable () -> Unit) {
         dynamicColor -> dynamicTheme(darkTheme)
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
+    }
+
+    val systemUiController = rememberSystemUiController()
+
+    LaunchedEffect(systemUiController, darkTheme) {
+        systemUiController.setSystemBarsColor(
+            color = Color.Transparent,
+            darkIcons = !darkTheme,
+        )
     }
 
     MaterialTheme(
