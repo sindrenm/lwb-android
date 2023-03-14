@@ -20,6 +20,7 @@ androidx-compose-ui-tooling = { module ="androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module ="androidx.compose.ui:ui-tooling-preview" }
 androidx-core = "androidx.core:core-ktx:1.9.0"
 androidx-lifecycle-runtime = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0"
+androidx-navigation-compose = "androidx.navigation:navigation-compose:2.5.3"
 androidx-test-espresso-core = "androidx.test.espresso:espresso-core:3.5.1"
 androidx-test-junit = "androidx.test.ext:junit:1.1.5"
 junit4 = "junit:junit:4.13.2"
