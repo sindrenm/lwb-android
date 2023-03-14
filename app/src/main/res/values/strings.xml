@@ -2,5 +2,6 @@
 
     <string name="app_name">Light Weight Baby</string>
     <string name="home_screen_title">Light Weight, Baby!</string>
+    <string name="x_kg">%.02f kg</string>
 
 </resources>
