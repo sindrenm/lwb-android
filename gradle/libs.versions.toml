@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.28.0"
-androidGradlePlugin = "8.1.0-alpha08"
+androidGradlePlugin = "8.1.0-alpha09"
 dagger-hilt = "2.45"
 kotlin = "1.8.10"
 
