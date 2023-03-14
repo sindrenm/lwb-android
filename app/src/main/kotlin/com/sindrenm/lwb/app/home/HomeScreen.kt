@@ -21,8 +21,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -42,9 +44,15 @@ import java.time.format.FormatStyle
 
 @Composable
 fun HomeScreen(viewState: HomeViewState) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+
     Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.home_screen_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.home_screen_title)) },
+                scrollBehavior = scrollBehavior,
+            )
         },
     ) { innerPadding ->
         Crossfade(viewState, label = "Fading between view states") { viewState ->
