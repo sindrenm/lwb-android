@@ -81,15 +81,13 @@ kapt {
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.android.desugarJdkLibs)
-
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    implementation(platform(libs.androidx.compose.bom))
-
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.dagger.hilt.android.testing)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
@@ -108,6 +106,7 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     implementation(libs.kotlinx.datetime)
     implementation(libs.material)
+    implementation(platform(libs.androidx.compose.bom))
 
     kapt(libs.dagger.hilt.compiler)
 
